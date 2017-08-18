@@ -1,0 +1,89 @@
+﻿@using whiskyshop.Models;
+@using whiskyshop.Helpers;
+@model whiskyshop.Models.PurchasePageList
+
+@{
+    ViewBag.Title = "В корзине";
+    if (ViewBag.Status == 1) 
+    {
+        ViewBag.Title = "Заказы в процессе обработки";
+    }
+    if (ViewBag.Status == 2)
+    {
+        ViewBag.Title = "Выполненные заказы";
+    }
+    if (Session["BagRoll"] == null || (decimal) Session["BagRoll"] == 0)
+    {
+        switch (ViewBag.Status == null? 0: (int) ViewBag.Status)
+        {
+            case 1: ViewBag.Title = "Нет заказов в процессе обработки";
+                break;
+            case 2: ViewBag.Title = "Нет выполненных заказов";
+                break;
+            default: ViewBag.Title = "В корзине пусто";
+                break;
+        }
+        
+    }
+}
+
+<h2 class="cattitle">@ViewBag.Title</h2>
+
+@{
+
+    if (Session["BagRoll"] != null && (decimal) Session["BagRoll"] > 0)
+{
+    
+<table cellpadding="5" border="0" width="70%">
+    <tr>
+        <th></th>
+        <th>Дата</th>
+        <th>Количество</th>
+        <th>Сумма</th>
+        <th>Наименование</th>
+        <th></th>
+    </tr>
+@foreach (var item in Model.Purchases) {
+    <tr>
+        <td width="5%"></td>
+        <td width="25%">
+            @Html.DisplayFor(modelItem => item.buydate)
+        </td>
+        <td width="25%">
+            @Html.DisplayFor(modelItem => item.qnty)
+        </td>
+        <td width="15%">
+            @Html.DisplayFor(modelItem => item.summa)
+        </td>
+        <td width="35%">
+            @Html.DisplayFor(modelItem => item.Product.name)
+        </td>
+        <td width="20%">
+           @Html.ActionLink("Удалить", "DeleteFromBag", new { id=item.id, status = ViewBag.Status})
+        </td>
+    </tr>
+}
+<tr><td></td><td></td><td><strong>Итого:</strong></td><td><strong>@Session["Bagroll"]</strong></td>
+    <td></td><td></td></tr>
+</table>
+
+}
+}
+
+@if (ViewBag.Status == 0 && (Session["BagRoll"] != null && (decimal) Session["BagRoll"] > 0))
+{   
+<div class="righted"><form action="/Account/Buy" method="post">    <p>
+       <br/><br/><br/><input type="submit" value="Сделать заказ" /> 
+</form></div>
+}
+   
+
+<br />
+<table width="100%">
+    <tr>
+        <td width="3%"></td>
+        <td><div class="btn-group">
+            @Html.PageLinks(Model.PageInfo, aa => Url.Action("Bag", new { page = aa, astatus = ViewBag.Status }))
+            </div></td>
+   </tr></table>
+

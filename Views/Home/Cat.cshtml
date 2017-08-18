@@ -1,0 +1,99 @@
+﻿@using whiskyshop.Models;
+@using whiskyshop.Helpers;
+@using System.Globalization;
+@model whiskyshop.Models.ProductListByCat
+
+@{            ViewBag.StrData = DateTime.Now.Year;
+              string selected0 = "";
+              string selected1 = "";
+              string selected2 = "";
+              string selected3 = "";
+              switch ((int) ViewBag.Soart)
+              {
+                  case 0: selected0 = "selected";
+                  break;
+                  case 1: selected1 = "selected";
+                  break;
+                  case 2: selected2 = "selected";
+                  break;
+                  case 3: selected3 = "selected";
+                  break;
+              }
+              
+ }
+<h2 class="cattitle">@ViewBag.Title</h2>
+
+<p class="userlogininfo">Сортировать по
+    <select onchange="location=value">
+  <option @selected0 value ="@Url.Action("Cat", new { id = ViewBag.IdParam, page= ViewBag.PageParam, soart = 0})">Наименование по возрастанию</option>
+  <option @selected1 value="@Url.Action("Cat", new { id = ViewBag.IdParam, page= ViewBag.PageParam, soart = 1})">Наименование по убыванию</option>
+  <option @selected2 value="@Url.Action("Cat", new { id = ViewBag.IdParam, page= ViewBag.PageParam, soart = 2})">Цена по возрастанию</option>
+  <option @selected3 value="@Url.Action("Cat", new { id = ViewBag.IdParam, page= ViewBag.PageParam, soart = 3})">Цена по убыванию</option>
+</select>
+</p>
+
+
+@helper InterestGirlDance(ProductListByCat P)
+{
+    <table border="0" width="100%" cellpadding="5%">
+        @{ int k = P.Products.Count();
+           int steps = (int)Math.Ceiling(k / 5.0);
+           int whole = 0;
+        }
+        @for (int j = 1; j <= steps; j++)
+        {
+            <tr><td width="1%"></td>
+                @{ int stepler = (k - whole > 5) ? 5 : (k - whole); }
+                @for (int i = 0; i < stepler; i++)
+                { 
+                    <td>
+                        <table width="100%" border="0">
+                            <tr>
+                                <td width="15%"  class="prodlabel">
+                                    <a href="@Url.Action("Prod", "Home", new { id = P.Products.ElementAt(whole).id })">
+                                        <img src="@P.Products.ElementAt(whole).pic" width="250" height="300" align="middle" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="prodpictitle"><a href="@Url.Action("Prod", "Home", new { id = P.Products.ElementAt(whole).id })">
+                                      <p class="prodpictitle">@P.Products.ElementAt(whole).name
+                                          <br>@string.Format("({0})", P.Products.ElementAt(whole).price.ToString("C", CultureInfo.CurrentCulture))
+                                          <br>@string.Format("В наличии: {0}", (P.Products.ElementAt(whole).qnty - P.Products.ElementAt(whole).reserved).ToString())
+                                      </p>
+                                     </a></td>
+                                    
+                            </tr>
+                        </table>
+                    </td>
+                    whole++;
+                }
+            </tr>
+        }
+    </table>
+}
+
+
+
+<table border="0">
+    <tr>
+
+        <table border="0">
+            <tr>@InterestGirlDance(Model)</tr>
+        </table>
+
+
+    </tr>
+</table>
+<br />
+<table width="100%">
+    <tr>
+        <td width="3%"></td>
+        <td><div class="btn-group">
+            @Html.PageLinks(Model.PageInfo, aa => Url.Action("Cat", new { page = aa, soart = ViewBag.Soart}))
+            </div></td>
+   </tr></table>
+
+@section footer {
+    <p class="thefooter">Демо-магазин виски © @ViewBag.StrData All rights reserved</p>
+}

@@ -1,0 +1,212 @@
+﻿.tdwelcome {
+   font-family: 'Courier New'; 
+   font-size: 30px;
+   font-weight: bold;
+   background-color: black;
+   color: gray;
+   padding: 1%;
+   background-image: url(Images/back.jpg);
+   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.52);
+}
+
+.tdnav {
+   font-family: 'Courier New'; 
+   font-size: 18px;
+   background-color: white;
+   color: black;
+   margin-left: 0px;
+}
+
+.righted {
+    margin-left: 15px;
+}
+
+ a {
+    text-decoration: none; 
+    color: black;
+   } 
+ a:hover { 
+    color: gray;
+   }
+a:visited {
+   color: black;
+    }
+
+.thefooter {
+    text-align:right;
+    background-color:white;
+    color: gray;
+    font-size: 12px;
+    margin-right: 10px;
+    padding: 1%;
+}
+
+.cattitle {
+    font-family: 'Courier New';
+    margin-left: 10px;
+    font-weight: bold;
+    text-shadow: gray 0.1em 0.1em 0.2em;
+}
+
+.cattitleright {
+    font-family: 'Courier New';
+    margin-left: 10px;
+    font-weight: bold;
+    text-shadow: gray 0.1em 0.1em 0.2em;
+    text-align: right;
+    margin-right: 35px;
+}
+
+
+.prodpictitle {
+    font-family: 'Courier New';
+    font-size: 16px;
+    text-align:left;
+    padding: 2px;
+    color: gray;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+
+.prodpictitle a:hover {
+    text-decoration:none;
+    color: white;
+    text-shadow:2px 2px 8px black;
+    font-weight: bold;
+
+    }
+.prodpictitle p:hover {
+    color: white;
+    }
+
+
+.tdpages {
+    font-family: 'Courier New';
+    font-weight: bold;
+    font-size: 16px;
+    text-align:center;
+}
+
+.mainul {
+    font-family: 'Courier New';
+    font-weight: bold;
+    text-shadow: gray 0.1em 0.1em 0.2em;
+    font-size: 18px;
+}
+
+.mainul a:hover {
+    text-decoration:none;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    }
+
+.prodlabel {
+    text-decoration:none;
+}
+
+.prodlabel img {
+    padding: 10px;
+    box-shadow: -1px 2px 25px 11px rgba(0,0,0,.2);
+    }
+
+
+.prodlabel img:hover {
+  box-shadow: -1px 2px 36px 18px rgba(0,0,0,.2);
+    }
+
+.prodlabel td {
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,.2);
+    }
+
+
+.proddesc {
+    text-align:left;
+    font-family: 'Courier New';
+    vertical-align: top;
+    padding: 5px;
+}
+
+.proddesc p {
+    font-size: 16px;
+    text-align:left;
+    margin-left: 15px;
+    margin-right: 3px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.servicemes {
+    font-family: 'Courier New';
+    font-size: 16px;
+    margin-left: 25px;
+    padding-top: 5px;
+
+}
+.servicemes p {
+    text-align:left;
+}
+
+.bag {
+    font-family: 'Courier New';
+    text-align:left;
+    padding: 2px;
+    color: gray;
+    text-decoration:none;
+    font-weight:bold;
+}
+.bag a {
+    font-size: 18px;
+}
+
+
+.bag a:hover {
+    text-decoration:none;
+    color: white;
+    text-shadow:3px 3px 10px black;
+    font-weight: bold;
+
+    }
+.bag p:hover {
+    color: white;
+    }
+
+.userlogininfo {
+    font-family: 'Courier New';
+    font-size: 12px;
+    padding: 10px;
+    text-shadow:3px 3px 10px black;
+}
+/*****************модальность**********************/
+.modal-overlay {
+  position:fixed;
+  top:0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+  z-index: 4;
+}
+.modal-window {
+ position:absolute;
+ top: 100px;
+ left: 50%;
+ width: 500px;
+ height:auto;
+ margin-left: -150px;
+ padding: 20px;
+ border: 2px solid #000;
+ background-color: #FFF;
+ -moz-border-radius: 6px;
+ -webkit-border-radius: 6px;
+ border-radius: 6px;
+ -moz-box-shadow: 0 0 14px #123;
+ -webkit-box-shadow: 0 0 14px #123;
+  box-shadow: 0 0 14px #123;
+  z-index: 5;
+}
+.remover{font-size: 12px;}
+.remover a:hover{cursor:pointer;}
+.pagewidth {margin-right: 10px;}

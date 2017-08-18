@@ -1,0 +1,25 @@
+﻿@model IEnumerable<whiskyshop.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "DelUser";
+}
+
+<h2 class="cattitle">Юзеры</h2>
+
+<table width ="30%">
+@foreach (var item in Model) {
+    <tr>
+        <td width="3%"></td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Удалить", "DelUserImme", new { AEmail=item.Email})
+        </td>
+    </tr>
+}
+
+</table>

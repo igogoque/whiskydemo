@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrap")
+    <link href="~/Content/Site.css" rel="stylesheet">
+</head>
+    @{bool IsAuth = User.Identity.IsAuthenticated;
+      bool IsAdmin = User.IsInRole("admin");
+      }
+<body>
+    <header>
+    <table id="headtable" width="100%">
+        <tr>
+          <td class="tdwelcome"><p>Демо-магазин виски</p></td>
+        </tr>
+        </table><br/>
+     <table width="100%" border="0" cellspacing="0">
+        <tr>
+            <td class="userlogininfo" width="25%">@{            string amessage = "Вход не выполнен";
+
+                              if (IsAuth)
+                              {
+                                  amessage = string.Format("Добро пожаловать, {0}!", User.Identity.Name);
+                                  <p>@amessage</p>@Html.ActionLink("Личный кабинет", "Cabinet","Account")
+                              } else
+                              {
+                                  <p>@amessage</p>
+                              }
+                              
+                }</td>
+          <td class="mainul" width="55%"><nav>
+                 @Html.ActionLink("Главная   |", "Index", "Home")
+                 @{if (IsAuth)
+                   {
+                     @Html.ActionLink("Выйти   |", "Logout", "Account")
+                    }
+                    else
+                    {
+                     @Html.ActionLink("Войти/Зарегистрироваться   |", "Login", "Account")                       
+                    }
+                            
+                   }     
+                 @{if (IsAdmin) {
+                    @Html.ActionLink("Администрирование   |", "Admin", "Account")
+                        }
+                   }     
+              </nav></td>
+              @{ if (Session["Bagcount"] == null || (int)Session["Bagcount"] == 0)
+                 {
+                    <td width="5%"><a href="@Url.Content("~/Account/Bag")"><img src="@Url.Content("~/Content/Images/emptybag.jpg")"/></a></td><td class="userlogininfo" width="15%">В корзине пусто</td>       
+                 } 
+                 else
+                 {
+                    <td width="5%"><a href="@Url.Content("~/Account/Bag")"><img src="@Url.Content("~/Content/Images/fullbag.jpg")" /></a></td>
+                    <td class="userlogininfo" width="15%"><a href="@Url.Content("~/Account/Bag")">@string.Format("В корзине товаров: {0}", Session["Bagcount"])<br>@Session["BagSum"]</a></td>         
+                 }
+              
+              }
+
+        </tr>
+    </table>
+
+    </header>
+    @RenderBody()
+
+    <footer>@RenderSection("footer", required: false)</footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

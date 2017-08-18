@@ -1,0 +1,46 @@
+﻿@model whiskyshop.Models.LoginModel
+
+@{
+    ViewBag.Title = "Вход на сайт";
+}
+
+<h2  class="cattitle">Вход на сайт</h2>
+<table width="100%" border="0"><tr><td width="1%"></td><td>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend class="userlogininfo">Вход для зарегистрированных покупателей</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <p>
+            <br><input type="submit" value="Войти" />
+        </p>
+        <div class="editor-field">
+            @Html.ActionLink("Забыли пароль?", "ForgotPassword")
+        </div>
+
+    </fieldset>
+}
+</td></tr></table>
+<table width="100%"><tr><td width="1%"></td><td class="prodpictitle">
+    <a href="/Account/Register" class="prodpictitle"><p class="prodpictitle">Зарегистрироваться</p></a>
+</td></tr><table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

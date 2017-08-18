@@ -1,0 +1,85 @@
+﻿@using System.Globalization;
+@model whiskyshop.Models.Product
+
+@{
+    ViewBag.ProdName = Model.name ;
+    int Avail = Model.qnty - Model.reserved;
+}
+
+<h2 class="cattitleright">@Model.name</h2>
+ <h4 class="cattitleright"> @string.Format("цена бутылки {0} (0,7 л). В наличии: {1} шт.", Model.price.ToString("C", CultureInfo.GetCultureInfo("ru-RU")),
+  Avail.ToString())</h4>
+<table width="100%" class="proddesc" border="0">
+    <tr>
+        <td width="15%"></td>
+        <td valign="top" width="10%" class="prodlabel"><img id="zoomer" src="@Model.pic" width="300" height="330" class="prodlabel"></td>
+        <td valign="top" width="60%"><p class="proddesc">@Model.description</p>
+            <p class="bag"><a href="@Url.Action("AddToBag", "Account", new { id = Model.id })">Купить</a></p>
+        </td>
+        <td width="15%"></td>
+    </tr>
+</table>
+
+@section scripts {
+ <script type="text/javascript">
+
+   $(document).ready(function () {
+  $(".remover, .modal-overlay").bind("click",
+	function () {
+      $("body").remove(".modal-window, .modal-overlay");
+				    }
+	);	   
+
+  $("body").bind("keydown",
+	function (e) {
+	  if (e.keyCode == 27) {
+        document.location.href = "";
+	  }	
+	});	   
+
+   function initmodal () {
+		     if ($(".modal-window").length == 0)
+			 {
+			  $("<div>", {"id":"oover"}).addClass("modal-overlay")
+			   .appendTo("body");
+			   var objimg = $("#zoomer").attr("src");
+			   var outimg = $("<img>", {
+			            "src": objimg,
+						"width": "100%",
+						"height": "100%"
+			           });
+
+			   var remof = $("<a>", {
+			             "class": "remover",
+  						 "href":"",
+						 "text": "Закрыть"
+			           });
+
+   		       return $("<div>")
+   		                .addClass("modal-window")
+			            .appendTo("body")
+						.append(outimg)
+						.append(remof);
+			  } else { return $(".modal-window");}			
+
+   }
+
+
+     $("#zoomer").bind("click",
+           function () { 
+		    initmodal();
+      });
+
+     $("#zoomer").bind("mouseenter",
+           function () { 
+		     $(this).fadeTo(500, 0.5);
+		   }); 
+
+     $("#zoomer").bind("mouseleave",
+           function () { 
+		     $(this).fadeTo(500, 1);
+		   }); 
+   });
+</script>
+    
+}

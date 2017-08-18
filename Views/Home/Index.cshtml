@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.StrData = DateTime.Now.Year;
+}
+<table width="100%" border="0"><tr>
+<td width="25%" valign="top"><p class="userlogininfo">На сегодяшний день у нас в ассортименте:</p>
+<ul class="mainul">
+@foreach (var b in ViewBag.Cats)
+{
+   <li><a href="Home/Cat/@b.id">@b.name</a></li> 
+}
+</ul><p class="userlogininfo">@Html.ActionLink("Скачать прайс в формате Excel", "GetFile")</p></td>
+<td><p class="servicemes">Добро пожаловать в наш демонстрационный виски-магазин!<br>
+    Предупреждаем, что он создан только для демонстрации возможностей потенциального интернет-магазина, реальных покупок здесь сделать 
+    невозможно. Среди наших виртуальных товаров:</p><br><div id="outjax">секундочку...</div></td>
+</tr></table>
+
+@section footer {
+    <p class="thefooter">Демо-магазин виски © @ViewBag.StrData All rights reserved</p>
+}
+
+@section scripts {
+ <script type="text/javascript">
+function randomtracks() {
+  $("#outjax").fadeOut(1500, function() {
+  $.ajax( {
+    "type":"POST",
+	"url":"@Url.Action("RandomPresent")",
+	"success": function (data) {
+	  $("#outjax").html(data);
+	  }
+	});
+      $("#outjax").fadeIn(1500);
+	});  
+}
+     setInterval(randomtracks, 7000);
+     window.onload = randomtracks();
+</script>
+    
+}

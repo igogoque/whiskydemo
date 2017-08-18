@@ -1,0 +1,30 @@
+﻿@model whiskyshop.Models.ApplicationUser
+
+
+<h2 class="cattitle">Личный кабинет</h2>
+
+@{
+    if (ViewBag.AfterBuy !=null && ViewBag.AfterBuy == 1)
+    {
+        <p class="servicemes">Ваш заказ принят к исполнению. Хотя... Это демонстрационный магазин, 
+            и товара Вы не получите.</p>
+    }   
+}
+
+<table width="100%" border="0"><tr><td width="1%"></td>
+    <td width="50%">@Html.ActionLink("История выполненных заказов", "Bag", new { astatus = 2, page =1 })</td>
+    </tr>
+    <tr><td width="1%"></td>
+    <td width="50%">@Html.ActionLink("Просмотр статусов текущих заказов", "Bag", new { astatus = 1, page =1})</td>    
+    </tr>
+    <tr><td width="1%"></td>
+    <tr><td width="1%"></td>
+    <td width="50%">@Html.ActionLink("Корзина", "Bag", new { astatus = 0, page =1})</td>    
+    </tr>
+    <td>
+@using (Html.BeginForm()) {
+    <p>
+       <br/><br/><br/><input type="hidden" value="Удалить учетную запись" /> 
+    </p>
+}
+    </td></tr></table>

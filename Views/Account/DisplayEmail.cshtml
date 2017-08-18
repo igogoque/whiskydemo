@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Завершение регистрации";
+}
+ 
+@if (Session["WasPass"] != null)
+{
+   
+    switch ((int) Session["WasPass"])
+    {
+        case 1:
+        <h2 class="cattitle">Сброс пароля</h2>
+        <p class="servicemes">На почту отправлено письмо с инструкциями</p>
+            break;
+        case 2:
+        <h2 class="cattitle">Пароль изменен</h2>
+        <p class="servicemes">Теперь Вы можете @Html.ActionLink("войти на сайт","Login", "Account")</p>
+            break;
+        case 3:
+        <h2 class="cattitle">Юзер не найден</h2>
+        <p class="servicemes">Сожалеем, но юзер не найден или Email не подтверждён...</p>
+            break;
+        default:
+            break;    
+    }
+     
+} 
+else
+{
+
+<h2 class="cattitle">@ViewBag.Title</h2>
+ <p class="servicemes">На указанный электронный адрес отправлены дальнейшие инструкции по завершению регистрации</p>
+}
+@{ Session["WasPass"] = null;}
+
+

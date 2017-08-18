@@ -1,0 +1,14 @@
+﻿@model IEnumerable<whiskyshop.Models.Product>
+<table width="100%" cellspacing="10">
+<tr>
+@foreach (var item in Model) {
+  <td>
+      <table>
+       <tr><td class="prodlabel"><a href="@Url.Action("Prod", new { id = item.id})"><img src="@item.pic" width="250" height="270"></a></td></tr>
+       <tr><td class="tdpages"><p>@item.name</p></td></tr>
+      </table>
+  </td>  
+}
+
+</tr>
+</table>
