@@ -30,10 +30,10 @@ namespace whiskyshop.Controllers
 
         [HttpPost]
         [NotSupportedExceptionFilter]
-        public async void Post(ForgotPassReq masyaga)
+        public void Post(ForgotPassReq masyaga)
         {
-            var user = await UserManager.FindByEmailAsync(masyaga.forgotemail);
-            if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+            var user = UserManager.FindByEmail(masyaga.forgotemail);
+            if (user == null || !(UserManager.IsEmailConfirmed(user.Id)))
             {
                throw new NotSupportedException("Пользователь с данным email не найден среди покупателей");
             }
@@ -45,7 +45,7 @@ namespace whiskyshop.Controllers
                   provider.Create("PasswordConfirmation"));
             }
 
-            string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+            string code = UserManager.GeneratePasswordResetToken(user.Id);
             var callbackUrl = masyaga.outurl + "forgotconfirm/" + user.Id;
 
             db.SendMail(masyaga.forgotemail, "Сброс пароля",

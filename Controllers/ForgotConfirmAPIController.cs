@@ -31,10 +31,10 @@ namespace whiskyshop.Controllers
 
         [HttpPost]
         [NotSupportedExceptionFilter]
-        public async void Post(ForgotPassConfirm masyaga)
+        public void Post(ForgotPassConfirm masyaga)
         {
-            ApplicationUser user = await UserManager.FindByIdAsync(masyaga.userid);
-            if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+            ApplicationUser user = UserManager.FindById(masyaga.userid);
+            if (user == null || !(UserManager.IsEmailConfirmed(user.Id)))
             {
               throw new NotSupportedException("Пользователь не найден среди покупателей или email не подтвержден");
             }
@@ -46,7 +46,7 @@ namespace whiskyshop.Controllers
                   provider.Create("PasswordConfirmation"));
             }
 
-            IdentityResult x = await UserManager.ResetPasswordAsync(masyaga.userid, masyaga.usertoken, masyaga.Password);
+            IdentityResult x = UserManager.ResetPassword(masyaga.userid, masyaga.usertoken, masyaga.Password);
             if (!x.Succeeded)
             {
                 throw new NotSupportedException(x.Errors.ToString());
@@ -57,6 +57,12 @@ namespace whiskyshop.Controllers
         {
             return null; // HTTP 200 response with empty body
         }
+
+        public string Get()
+        {
+            return "";
+        }        
+
 
 
     }
