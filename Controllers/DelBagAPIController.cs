@@ -26,6 +26,11 @@ namespace whiskyshop.Controllers
             db.SaveChanges();
         }
 
+        public string Options()
+        {
+            return null; // HTTP 200 response with empty body
+        }
+
 
     }
 }

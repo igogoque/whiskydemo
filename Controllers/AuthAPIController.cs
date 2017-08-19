@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Security.Claims;
 using Microsoft.Owin.Security.DataProtection;
+using System.Web.Http.Cors;
 
 namespace whiskyshop.Controllers
 {
@@ -44,6 +45,11 @@ namespace whiskyshop.Controllers
                 outuser.Email = usar.Email;
             }
             return outuser;
+        }
+
+        public string Options()
+        {
+            return null; // HTTP 200 response with empty body
         }
 
 

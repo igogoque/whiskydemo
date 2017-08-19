@@ -60,6 +60,16 @@ namespace whiskyshop.Controllers
                 else throw new NotSupportedException("Пользователь с данным email уже зарегистрирован"); 
             }
 
+         public string Options()
+         {
+             return null; // HTTP 200 response with empty body
+         }
+
+         public string Get()
+         {
+             return "";
+         }
+
          
     }
 }

@@ -10,8 +10,8 @@ namespace whiskyshop
     {
         public static void Register(HttpConfiguration config)
         {
-            var cors = new EnableCorsAttribute("*", "*", "*"); //whiskydemo path
-            config.EnableCors(cors);
+           //var cors = new EnableCorsAttribute("*", "*", "*"); //whiskydemo path
+            config.EnableCors();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

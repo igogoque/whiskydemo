@@ -171,7 +171,7 @@ namespace whiskyshop.Models
         {
 
             // наш email с заголовком письма
-            MailAddress from = new MailAddress("demowhisky@yandex.ru", aSubj);
+            MailAddress from = new MailAddress("demowhisky@gmail.com", aSubj);
             // кому отправляем
             MailAddress to = new MailAddress(aTo);
             // создаем объект сообщения
@@ -182,11 +182,11 @@ namespace whiskyshop.Models
             m.Body = aBody;
             m.IsBodyHtml = true;
             // адрес smtp-сервера, с которого мы и будем отправлять письмо
-            SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.yandex.ru", 587);
+            SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
             // логин и пароль
-            smtp.Credentials = new System.Net.NetworkCredential("demowhisky@yandex.ru", "forever95");
+            smtp.Credentials = new System.Net.NetworkCredential("demowhisky@gmail.com", "forever95");
             smtp.EnableSsl = true;
-            // smtp.UseDefaultCredentials = false;
+         //   smtp.UseDefaultCredentials = false;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(m);
 

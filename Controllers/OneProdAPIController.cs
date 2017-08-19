@@ -19,5 +19,11 @@ namespace whiskyshop.Controllers
             return db.Products.Where(p=>p.id == id);
         }
 
+
+        public string Options()
+        {
+            return null; // HTTP 200 response with empty body
+        }
+
     }
 }

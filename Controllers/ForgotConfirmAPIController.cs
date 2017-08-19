@@ -53,5 +53,11 @@ namespace whiskyshop.Controllers
             }
         }
 
+        public string Options()
+        {
+            return null; // HTTP 200 response with empty body
+        }
+
+
     }
 }

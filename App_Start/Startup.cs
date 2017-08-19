@@ -28,25 +28,8 @@ namespace whiskyshop
                 LoginPath = new PathString("/Account/Login"),
             });
 
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-            //var policy = new CorsPolicy()
-            //{
-            //    AllowAnyHeader = true,
-            //    AllowAnyMethod = true,
-            //    SupportsCredentials = true
-            //};
-
-            //policy.Origins.Add("http://localhost:3408"); //angwhisky path
-
-            //app.UseCors(new CorsOptions
-            //{
-            //    PolicyProvider = new CorsPolicyProvider
-            //    {
-            //        PolicyResolver = context => Task.FromResult(policy)
-            //    }
-            //});
-
-            
+           // app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+           
             var myProvider = new AppAuthorizationServerProvider();
             var OAuthOptions = new OAuthAuthorizationServerOptions
             {

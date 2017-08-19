@@ -52,5 +52,12 @@ namespace whiskyshop.Controllers
             db.SendMail("ikehurricane@mail.ru", "Демовиски заказали", MailBodyStr);
 
         }
+
+        public string Options()
+        {
+            return null; // HTTP 200 response with empty body
+        }
+
+
     }
 }

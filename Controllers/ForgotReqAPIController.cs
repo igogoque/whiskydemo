@@ -52,5 +52,17 @@ namespace whiskyshop.Controllers
                "Для сброса пароля скопируйте данный код:<br><br>" + code + "<br><br> и вставьте его <a href=\""
                              + callbackUrl + "\">по данной ссылке</a>");
         }
+
+        public string Options()
+        {
+            return null; // HTTP 200 response with empty body
+        }
+
+        public string Get()
+        {
+            return "";
+        }        
+
+
     }
 }

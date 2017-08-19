@@ -39,5 +39,11 @@ namespace whiskyshop.Controllers
             } else
                 throw new NotSupportedException("Пользователь не существует"); 
         }
+
+        public string Options()
+        {
+            return null; // HTTP 200 response with empty body
+        }
+
     }
 }

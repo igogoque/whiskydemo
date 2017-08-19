@@ -18,5 +18,11 @@ namespace whiskyshop.Controllers
         {
             return db.Categories.ToList();
         }
+
+        public string Options()
+        {
+            return null; // HTTP 200 response with empty body
+        }
+
     }
 }
