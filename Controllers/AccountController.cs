@@ -42,26 +42,26 @@ namespace whiskyshop.Controllers
         public ApplicationContext db = new ApplicationContext();
         public int OnceSkipUrlReffer = 0;
 
-        public string Donedone()
-        {
-            ApplicationContext db = new ApplicationContext();
-            var rolemanager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
-            var role1 = new IdentityRole { Name = "admin" };
-            var role2 = new IdentityRole { Name = "user" };
-            rolemanager.Create(role1);
-            rolemanager.Create(role2);
-            var admin = new ApplicationUser { Email = "ikehurricane@mail.ru", UserName = "ikehurricane@mail.ru", EmailConfirmed = true };
-            string password = "Forever95";
-            var result = UserManager.Create(admin, password);
-            if (result.Succeeded)
-            {
-                UserManager.AddToRole(admin.Id, role1.Name);
-                UserManager.AddToRole(admin.Id, role2.Name);
-            }
+        //public string Donedone()
+        //{
+        //    ApplicationContext db = new ApplicationContext();
+        //    var rolemanager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+        //    var role1 = new IdentityRole { Name = "admin" };
+        //    var role2 = new IdentityRole { Name = "user" };
+        //    rolemanager.Create(role1);
+        //    rolemanager.Create(role2);
+        //    var admin = new ApplicationUser { Email = "ikehurricane@mail.ru", UserName = "ikehurricane@mail.ru", EmailConfirmed = true };
+        //    string password = "Forever95";
+        //    var result = UserManager.Create(admin, password);
+        //    if (result.Succeeded)
+        //    {
+        //        UserManager.AddToRole(admin.Id, role1.Name);
+        //        UserManager.AddToRole(admin.Id, role2.Name);
+        //    }
 
-            db.SaveChanges();
-            return "всё ОК бля";
-        }
+        //    db.SaveChanges();
+        //    return "всё ОК бля";
+        //}
 
 
 
