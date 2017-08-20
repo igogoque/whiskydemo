@@ -42,7 +42,7 @@ namespace whiskyshop.Controllers
         public ApplicationContext db = new ApplicationContext();
         public int OnceSkipUrlReffer = 0;
 
-        /*public string Donedone()
+        public string Donedone()
         {
             ApplicationContext db = new ApplicationContext();
             var rolemanager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
@@ -61,7 +61,7 @@ namespace whiskyshop.Controllers
 
             db.SaveChanges();
             return "всё ОК бля";
-        }*/
+        }
 
 
 
